@@ -3,7 +3,7 @@ dotenv.config();
 var path = require('path')
 const express = require('express')
 //var meaningcloud = require("aylien_textapi");//fix?
-
+const mockAPIResponse = require('./mockAPI.js')
 const app = express()
 
 //var textapi = new meaningcloud({
