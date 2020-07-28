@@ -23,6 +23,13 @@ function handleSubmit(event) {
         let post_res = res.text();
         //console.log("back from the server side: ", post_res);
         return post_res
+        //const testget = fetch('http://localhost:8081/testget', {
+          //  method: 'GET',
+            //mode: 'same-origin',
+            //headers: {
+            //    'Content-Type': 'application/json',
+            //},
+            //body: JSON.stringify(data),
     })
     .then(function(data) { //data is {url: "zip"}
         console.log("DATUR: ", data)

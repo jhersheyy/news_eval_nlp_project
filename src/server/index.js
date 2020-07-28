@@ -5,15 +5,10 @@ const express = require('express')
 var bodyParser = require('body-parser') // to use url encoded values
 var cors = require('cors') // to use json
 let input_url = [];
-//var meaningcloud = require("aylien_textapi");//fix?
 //const mockAPIResponse = require('./mockAPI.js')
 const app = express()
 
 let baseURL = 'https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?zip=';
-
-//var textapi = new meaningcloud({
-//    application_key: process.env.API_KEY
-//  });
 
 app.use(cors())
 
@@ -53,7 +48,9 @@ function addPost(req,res){
     input_url = req.body.url;
     console.log("input_url now set to: ", input_url)
 //  projectData = newEntry;
-    res.send("zip received");
+    const info =  fetch(baseURL+input_url+process.env.APP_ID)
+
+    res.send(info);
 };
 
 
