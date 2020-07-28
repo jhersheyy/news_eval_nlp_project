@@ -8,8 +8,8 @@ let input_url = [];
 //const mockAPIResponse = require('./mockAPI.js')
 const app = express()
 
-let baseURL = 'https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?zip=';
-
+const baseURL = 'https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?zip=';
+const key= process.env.APP_ID;
 app.use(cors())
 
 app.use(bodyParser.json())
@@ -38,7 +38,16 @@ app.get('/testget', function (req, res) {
 
     res.send(info)
 })
-
+const getWeather = async (baseURL, input_url, key)=>{
+    const res = await fetch(baseURL+input_url+key)
+    try {
+      const data = await res.json();
+      return data;
+    }  catch(error) {
+      console.log("error", error);
+      // appropriately handle the error
+    }
+  }
 // Post Route
 app.post('/testpost', addPost);
 //let input_url = [];
@@ -48,7 +57,7 @@ function addPost(req,res){
     input_url = req.body.url;
     console.log("input_url now set to: ", input_url)
 //  projectData = newEntry;
-    const info =  fetch(baseURL+input_url+process.env.APP_ID)
+    const info =  getWeather(baseURL, input_url, key);//fetch(baseURL+input_url+process.env.APP_ID)
 
     res.send(info);
 };

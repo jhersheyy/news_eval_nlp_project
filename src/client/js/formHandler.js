@@ -1,4 +1,4 @@
-function handleSubmit(event) {
+async function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
@@ -11,8 +11,9 @@ function handleSubmit(event) {
 
     console.log("::: Form Submitted :::")
 
-    const response = fetch('http://localhost:8081/testpost', {
+    const response = await fetch('http://localhost:8081/testpost', {
         method: 'POST', 
+        credentials: 'same-origin',
         mode: 'cors', 
         headers: {
             'Content-Type': 'application/json',
