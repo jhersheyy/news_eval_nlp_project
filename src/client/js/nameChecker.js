@@ -1,15 +1,15 @@
 function checkForName(inputText) {
     console.log("::: Running checkForName :::", inputText);
     let names = [
-        "Picard",
-        "Janeway",
-        "Kirk",
-        "Archer",
-        "Georgiou"
+        "90011",
+        "92612",
+        "90210",
+        "92503",
+        "Kirk"
     ]
 
     if(names.includes(inputText)) {
-        alert("Welcome, Captain!")
+        alert("YUP, issa zip!")
     }
 }
 
