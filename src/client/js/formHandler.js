@@ -3,48 +3,50 @@ async function handleSubmit(event) {
 
     // check what text was put into the form field:
     let formText = document.getElementById('zip').value
-    Client.checkForName(formText)
+    if( Client.checkURL(formText)){
+        //only continue IF valid url
+        console.log("::: Form Submitted :::")
+        //send url to server side thru post endpt:
+        const response = await fetch('http://localhost:8081/testpost', {
+            method: 'POST', 
+            credentials: 'same-origin',
+            mode: 'cors', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({url: formText}), 
+        })
+        //relay data from server side:
+        .then(res => {
+            let post_res = res.json();
+            //console.log("back from the server side: ", post_res);
+            return post_res
+        })
+        //handle promise error 
+        .catch((error) => {
+            console.log("error:: ", error);
+        });
 
-    console.log("::: Form Submitted :::")
-    //send url to server side thru post endpt:
-    const response = await fetch('http://localhost:8081/testpost', {
-        method: 'POST', 
-        credentials: 'same-origin',
-        mode: 'cors', 
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({url: formText}), 
-      })
-      //relay data from server side:
-    .then(res => {
-        let post_res = res.json();
-        //console.log("back from the server side: ", post_res);
-        return post_res
-    })
-    //handle promise error 
-    .catch((error) => {
-        console.log("error:: ", error);
-    });
-
-    //check results:
-    /*weather api:
+        //check results:
+        /*weather api:
+        console.log("DATUR: ", response);
+        console.log("DATA.MAIN: ",response.main);
+        console.log("DATA MAIN TEMP: ", response.main.temp);
+        document.getElementById('results').innerHTML = response.main.temp;  
+        */
+    /* unnecessary logs
     console.log("DATUR: ", response);
-    console.log("DATA.MAIN: ",response.main);
-    console.log("DATA MAIN TEMP: ", response.main.temp);
-    document.getElementById('results').innerHTML = response.main.temp;  
+    console.log("DATA.MODEL: ",response.model);
+    console.log("DATA SCORE TAG: ", response.score_tag);
+    console.log("DATA.AGREEMENT: ",response.agreement);
+    console.log("DATA.SUBJECTIVITY: ",response.subjectivity);
+    console.log("DATA.CONFIDENCE: ",response.confidence);
+    console.log("DATA.IRONY: ",response.irony);
     */
-   /* unnecessary logs
-   console.log("DATUR: ", response);
-   console.log("DATA.MODEL: ",response.model);
-   console.log("DATA SCORE TAG: ", response.score_tag);
-   console.log("DATA.AGREEMENT: ",response.agreement);
-   console.log("DATA.SUBJECTIVITY: ",response.subjectivity);
-   console.log("DATA.CONFIDENCE: ",response.confidence);
-   console.log("DATA.IRONY: ",response.irony);
-   */
-  updateUI(response);
-    
+    updateUI(response);
+    } else {
+        alert("INVALID URL: Please enter a valid url.");
+    }
 }
 function updateUI(data){
     document.getElementById('score').innerHTML = "Polarity: " + polarityCheck(data.score_tag);
