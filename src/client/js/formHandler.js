@@ -19,7 +19,7 @@ async function handleSubmit(event) {
         //relay data from server side:
         .then(res => {
             let post_res = res.json();
-            //console.log("back from the server side: ", post_res);
+            console.log("back from the server side: ", post_res);
             return post_res
         })
         //handle promise error 
@@ -34,16 +34,21 @@ async function handleSubmit(event) {
         console.log("DATA MAIN TEMP: ", response.main.temp);
         document.getElementById('results').innerHTML = response.main.temp;  
         */
-    /* unnecessary logs
-    console.log("DATUR: ", response);
-    console.log("DATA.MODEL: ",response.model);
-    console.log("DATA SCORE TAG: ", response.score_tag);
-    console.log("DATA.AGREEMENT: ",response.agreement);
-    console.log("DATA.SUBJECTIVITY: ",response.subjectivity);
-    console.log("DATA.CONFIDENCE: ",response.confidence);
-    console.log("DATA.IRONY: ",response.irony);
-    */
-    updateUI(response);
+        /* unnecessary logs
+        console.log("DATUR: ", response);
+        console.log("DATA.MODEL: ",response.model);
+        console.log("DATA SCORE TAG: ", response.score_tag);
+        console.log("DATA.AGREEMENT: ",response.agreement);
+        console.log("DATA.SUBJECTIVITY: ",response.subjectivity);
+        console.log("DATA.CONFIDENCE: ",response.confidence);
+        console.log("DATA.IRONY: ",response.irony);
+        */
+       console.log(response);
+        if (response.status.code !== '0'){
+            alert("UNABLE TO ANALYZE CONTENT AT URL: Please enter a valid url.")
+        } else{
+            updateUI(response);
+        }
     } else {
         alert("INVALID URL: Please enter a valid url.");
     }
