@@ -1,3 +1,6 @@
+$maincolor : #eae6e3;   
+
+
 body {
     display: flex;
     flex-direction: column;
@@ -6,9 +9,16 @@ body {
 
 main {
     flex: 2;
+    background-color: $maincolor;
+
 }
 
 section {
     max-width: 800px;
     margin: 50px auto;
+}
+
+.prettytext{
+    color: rgb(141, 66, 78);
+    font-weight: bolder;
 }

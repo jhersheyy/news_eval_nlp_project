@@ -1,5 +1,12 @@
+$headercolor : #d47ca0;
+
 header {
     display: flex;
     justify-content: space-between;
     padding: 10px 40px;
+    background-color: $headercolor;
+}
+
+.logo{
+    width: 10vw;
 }
