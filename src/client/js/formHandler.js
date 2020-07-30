@@ -47,6 +47,7 @@ async function handleSubmit(event) {
         if (response.status.code !== '0'){
             alert("UNABLE TO ANALYZE CONTENT AT URL: Please enter a valid url.")
         } else{
+            alert("Analysis complete!!");
             updateUI(response);
         }
     } else {
