@@ -43,11 +43,15 @@ async function handleSubmit(event) {
    console.log("DATA.CONFIDENCE: ",response.confidence);
    console.log("DATA.IRONY: ",response.irony);
    */
-   document.getElementById('score').innerHTML = "Polarity: " + polarityCheck(response.score_tag);
-   document.getElementById('agreement').innerHTML = "Overall Sentiments: " + response.agreement.toLowerCase();
-   document.getElementById('subjectivity').innerHTML = "Subjectivity: " + response.subjectivity.toLowerCase();
-   document.getElementById('irony').innerHTML = "Irony: " + response.irony.toLowerCase();
-   document.getElementById('confidence').innerHTML = "Analysis Confidence: " + response.confidence+"%";   
+  updateUI(response);
+    
+}
+function updateUI(data){
+    document.getElementById('score').innerHTML = "Polarity: " + polarityCheck(data.score_tag);
+    document.getElementById('agreement').innerHTML = "Overall Sentiments: " + data.agreement.toLowerCase();
+    document.getElementById('subjectivity').innerHTML = "Subjectivity: " + data.subjectivity.toLowerCase();
+    document.getElementById('irony').innerHTML = "Irony: " + data.irony.toLowerCase();
+    document.getElementById('confidence').innerHTML = "Analysis Confidence: " + data.confidence+"%";  
 }
 
 function polarityCheck(score){
