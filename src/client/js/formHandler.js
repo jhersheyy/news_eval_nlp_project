@@ -2,7 +2,7 @@ async function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field:
-    let formText = document.getElementById('zip').value
+    let formText = document.getElementById('url').value
     if( Client.checkURL(formText)){
         //only continue IF valid url
         console.log("::: Form Submitted :::")
