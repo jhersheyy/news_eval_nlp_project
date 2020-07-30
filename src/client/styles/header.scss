@@ -1,12 +1,17 @@
-$headercolor : #d47ca0;
+$headercolor : #908d85;
 
 header {
-    display: flex;
+    display: block;
+    text-align: center;
     justify-content: space-between;
     padding: 10px 40px;
     background-color: $headercolor;
 }
-
-.logo{
-    width: 10vw;
+#jhlogo{
+    height: 3em;
+}
+@media (min-width: 415px){
+    header{
+        display: flex;
+    }
 }

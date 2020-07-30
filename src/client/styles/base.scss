@@ -1,4 +1,4 @@
-$maincolor : #eae6e3;   
+$maincolor : #d2c3a7;   
 
 
 body {
@@ -12,13 +12,25 @@ main {
     background-color: $maincolor;
 
 }
-
 section {
     max-width: 800px;
     margin: 50px auto;
 }
-
+.analysis{
+    padding-bottom: 3px;
+    border-bottom: 2px ridge white;
+}
 .prettytext{
-    color: rgb(141, 66, 78);
+    color: white;
+    text-shadow: 2px 2px 1px #3d3c38;
     font-weight: bolder;
+    font-size: 1.5em;
+    padding-top: 10px;
+}
+.entry{
+    padding:10px;
+}
+#entryHolder{
+    margin-top:5px;
+    padding: 15px;
 }
