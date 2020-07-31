@@ -26,7 +26,13 @@ module.exports = {
             {
                 test: /\.scss$/, // NOTE:NO QUOTES
                 use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-            }
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader',
+                ],
+            },
         ]
     },
     plugins: [
