@@ -24,7 +24,7 @@ async function handleSubmit(event) {
         })
         //handle promise error 
         .catch((error) => {
-            console.log("error:: ", error);
+            console.log("error with promise: ", error);
         });
 
         //check results:
@@ -51,7 +51,7 @@ async function handleSubmit(event) {
             updateUI(response);
         }
     } else {
-        alert("INVALID URL: Please enter a valid url.");
+        alert("INVALID URL: Please enter a valid url. (did not pass url checker)");
     }
 }
 function updateUI(data){
@@ -87,3 +87,4 @@ function polarityCheck(score){
 }
 
 export { handleSubmit }
+export {polarityCheck}
