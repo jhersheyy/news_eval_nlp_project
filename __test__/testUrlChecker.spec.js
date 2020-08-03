@@ -1,12 +1,12 @@
 import { checkURL } from "../src/client/js/urlChecker"
 
 
-describe('Testing urlChecker() function for legitimate urls' , () => {
+describe('Testing url validation functionality' , () => {
     var url = "latimes.com/science/story/2019-09-05/why-people-respond-to-negative-news";
-    test('It should return true', async () => {
+    test("Testing the checkURL() function for legit urls", async () => {
         const response = checkURL(url);
         expect(response).toBeDefined();
-        expect(response).toBe(true);
+        expect(response).toBeTruthy();
     });
 });
 
@@ -15,6 +15,6 @@ describe('Testing urlChecker() function for illegitimate urls' , () => {
     test('It should return true', async () => {//make it a null one
         const response = checkURL(url);
         expect(response).toBeDefined();
-        expect(response).toBe(true);
+        expect(response).toBeFalsy();
     });
 });
