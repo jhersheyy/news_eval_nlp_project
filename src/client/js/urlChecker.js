@@ -1,5 +1,4 @@
 function checkURL(inputText) {
-    //console.log("::: Running checkURL :::", inputText);
    //will need extra check for url's with no content 
    var regex = inputText.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
    
