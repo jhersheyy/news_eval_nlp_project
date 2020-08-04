@@ -46,6 +46,14 @@
             <a href="https://abcnews.go.com/US/police-release-horrific-details-1st-mass-shooting-year/story?id=68483893" target="_blank"><img id = "nlogo2" alt="abc news icon" class="logopic"></a>
             <a href="https://in.mashable.com/entertainment/15977/star-trek-discovery-adil-hussain-teases-guest-appearance-in-season-3-fans-are-loving-it" target="_blank"><img id="nlogo3" alt="mashable icon" class="logopic"></a>            
         </footer>
-
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </body>
 </html>

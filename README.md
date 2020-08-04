@@ -66,5 +66,4 @@ To handle any potential errors, I nested my code in if statements that have cond
 I tested that my url checker function worked, my polarity translator (to make the api output more readable), and the overall functionality of my handleSubmit function.
 
 ### Service Worker Setup
-- Go back to the web pack config and add the setup for service workers.  
-- Test that the site is now available even when you stop your local server  
+To install service workers, I added the require and instantiate statements to the webpack config file for the production environment only, as service workers are not helpful in development. I then installed service workers on my terminal and added a script tag to my html.
