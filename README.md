@@ -4,7 +4,19 @@ This project is a web tool that runs a Natural Language Processing (NLP) API on 
 
 The project is built off skeleton code provided by Udacity. Technologies used include webpack, express, sass, service workers, and the meaningcloud api.
 
-## Getting started
+## Installation
+* clone the directory
+* in terminal, navigate to hte root directory of the project
+* run `npm install` to install dependencies
+* ensure there is no dist folder already and if there is run `rm -rf dist` to remove the file
+* run `npm run build-prod` to compile the code
+* run `npm run start` to start up the server
+* on your browser, go to localhost:8081 to use the app
+NOTE: for dev mode, run `npm run build-prod`; no dist folder will be made, but the compiled code can be found in
+chrome devtools through the network tab
+
+## Development Process
+### Getting started
 
 After cloning the skeleton code, I followed the lesson plan to fix the basic functionality of the page, including:
 * install webpack
@@ -20,20 +32,20 @@ After cloning the skeleton code, I followed the lesson plan to fix the basic fun
 * set express server to run on port 8081
 * add plugins to minify css
 
-## Setting up the API
+### Setting up the API
 
 The Meaningcloud API (for sentiment analysis) is different from the Aylien API in that it has no SDK and there is only one key/id needed to make a request to the api.
 
-### Step 1: Signup for an API key
+#### Step 1: Signup for an API key
 First, I made an account with Meaningcloud [here](https://www.meaningcloud.com/developer/create-account). I verified my account and received my API KEY.
 
-### Step 2: Install the SDK
+#### Step 2: Install the SDK
 As mentioned earlier, Meaningcloud has no sdk.
 
-### Step 3: Require the SDK package
+#### Step 3: Require the SDK package
 No sdk= no require statements.
 
-### Step 4: Environment Variables
+#### Step 4: Environment Variables
 To ensure privacy I made a .env file to save my API KEY and added that file to the .gitignore list, so my information is not released. I also installed dotenv through npm and added these two lines to my server/index.js:
 
 const dotenv = require('dotenv');
@@ -41,7 +53,7 @@ dotenv.config();
 
 This way, I am able to later use process.env.API_KEY to access my key in the server side index.js.
 
-### Step 5: Using the API
+#### Step 5: Using the API
 
 To use the API you have to set up a POST route, so the client side and server side can exchange information.
 
@@ -56,14 +68,14 @@ And another chunk between the API KEY and query url:
 
 After receiving the query result, I transform it into JSON and send the result back to the client to upload the result, formatted, to the UI through DOM selectors.
 
-## After the Aylien API
+### After the Aylien API
 
-### Error Handling: Invalid User Input
+#### Error Handling: Invalid User Input
 
 To handle any potential errors, I nested my code in if statements that have conditionals to test input validity and api result status. I also added .catch blocks to my promises.
 
-### Testing with Jest
+#### Testing with Jest
 I tested that my url checker function worked, my polarity translator (to make the api output more readable), and the overall functionality of my handleSubmit function.
 
-### Service Worker Setup
+#### Service Worker Setup
 To install service workers, I added the require and instantiate statements to the webpack config file for the production environment only, as service workers are not helpful in development. I then installed service workers on my terminal and added a script tag to my html.
