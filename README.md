@@ -60,16 +60,11 @@ After receiving the query result, I transform it into JSON and send the result b
 
 ### Error Handling: Invalid User Input
 
-- Test that the server and form submission work, making sure to also handle error responses if the user input does not match API requirements. 
+To handle any potential errors, I nested my code in if statements that have conditionals to test input validity and api result status. I also added .catch blocks to my promises.
+
+### Testing with Jest
+I tested that my url checker function worked, my polarity translator (to make the api output more readable), and the overall functionality of my handleSubmit function.
 
 ### Service Worker Setup
 - Go back to the web pack config and add the setup for service workers.  
-- Test that the site is now available even when you stop your local server 
-
-### Testing with Jest
- 
-....
-
-## Deploying
-
-A great step to take with your finished project would be to deploy it! Unfortunately its a bit out of scope for me to explain too much about how to do that here, but checkout [Netlify](https://www.netlify.com/) or [Heroku](https://www.heroku.com/) for some really intuitive free hosting options.
+- Test that the site is now available even when you stop your local server  
